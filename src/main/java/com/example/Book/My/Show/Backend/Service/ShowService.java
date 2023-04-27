@@ -52,10 +52,18 @@ public class ShowService {
 
         show.setShowSeatsEntityList(seatEntityList);
 
-        for(ShowSeatsEntity showSeat : seatEntityList) {
-            showSeat.setShowsEntity(show);
-        }
-        showRepository.save(show);
+        show = showRepository.save(show);
+
+        movie.getShowsEntityList().add(show);
+        theater.getShowsEntityList().add(show);
+
+        movieRepository.save(movie);
+        theaterRepository.save(theater);
+
+//        for(ShowSeatsEntity showSeat : seatEntityList) {
+//            showSeat.setShowsEntity(show);
+//        }
+//        showRepository.save(show);
         return "Show added succesfully";
     }
         //We have to create the show seats

@@ -21,7 +21,7 @@ public class TicketController {
          try{
              return ticketService.bookTicket(bookTicketRequestDto);
          }catch(Exception e){
-             return "The requested seat is already Booked";
+             return e.getMessage();
          }
 
      }
